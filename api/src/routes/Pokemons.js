@@ -6,6 +6,7 @@ const getPokemonByName = require("../controllers/getPokemonByName.js")
 
 router.get("/", async (req, res) => {
   try {
+
     let { name } = req.query;
     if (name) {
       name = name.toLowerCase();
@@ -15,7 +16,7 @@ router.get("/", async (req, res) => {
     const pokemons = await getAllPokemons();
     res.json(pokemons);
   } catch (error) {
-    res.status(400).send("no funca");
+    res.status(400).send(error.message);
   }
 });
 

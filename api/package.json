@@ -7,7 +7,7 @@
     "start": "nodemon -L",
     "getApi": "nodemon ./src/controllers/getPokemonsFromApi.js",
     "getAll": "nodemon ./src/controllers/getAllPokemons.js",
-    "getDetails": "nodemon ./src/controllers/getPokemonAPIByName.js",
+    "getDetails": "nodemon ./src/controllers/getDetailPokemonAPI.js",
     "routeDetail": "nodemon ./src/routes/getPokemonById.js",
     "getTypes": "nodemon ./src/controllers/getTypesDb.js",
     "test": "mocha -w ./tests/**/*.spec.js"

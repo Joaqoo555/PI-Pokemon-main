@@ -1,7 +1,7 @@
-const { DataTypes,Sequelize } = require("sequelize");
+const { DataTypes } = require("sequelize");
 module.exports = (dataBase) => {
     //Definimos un modelo que sera una tabla en nuestra base de datos
-  dataBase.define("Type", {
+  dataBase.define("type", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,

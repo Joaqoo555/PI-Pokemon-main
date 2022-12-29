@@ -9,7 +9,7 @@ router.get("/", async (req, res)=>{
         const types = await getTypesDb();
         res.status(201).json(types)
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json(error.message)
     }
 })
 

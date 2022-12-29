@@ -11,7 +11,7 @@ const getAllPokemons = async () => {
     if(!pokemonsApi.length)
         return pokemonsDb
     //retorno solo los de la API si no se creo ningun pokemon en la Db
-    if(!pokemonsDb.length) 
+    if(!pokemonsDb.length)
         return pokemonsApi
     //Si estan en los dos lados, los concateno 
     const allPokemons = [...pokemonsApi, ...pokemonsDb];

@@ -1,0 +1,22 @@
+.card{
+    min-width: 100px;
+    width: 150px;
+    min-height: 150px;
+    max-height: 200px;
+    background: #FFC8A9;
+    margin-bottom: 20px;
+    border-radius: .2em;
+    box-shadow: 0 0 15px 1px rgb(0, 0, 0);
+    padding: .2em;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: 400;
+}
+.card:hover {
+    transition: .2s;
+    scale: 1.025;
+}
+.img{
+    width: 150px;
+}

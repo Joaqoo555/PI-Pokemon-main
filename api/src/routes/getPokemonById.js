@@ -9,7 +9,7 @@ router.get("/:id", async (req, res) => {
     res.json(pokemon);
   } catch (error) {
     //agarro el error si es que surge
-    res.status(400).send(error);
+    res.status(400).send(error.message);
   }
 });
 

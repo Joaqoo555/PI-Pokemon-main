@@ -1,0 +1,33 @@
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: var(--color-background-filter);
+    border-radius: 8px;
+    height: 20vh;
+    display: grid;
+    grid-template-areas: "s1 s2"
+                        "s3 s4";
+    padding: 1.2em;
+}
+
+.s1 {
+    grid-area: s1;
+}
+.s2 {
+    grid-area: s2;
+}
+.s3 {
+    grid-area: s3;
+}
+.s4 {
+    grid-area: s4;
+}
+
+
+
+select {
+    outline: none;
+    border: none;
+    margin: 1em;
+    border-radius: .2em;
+}
