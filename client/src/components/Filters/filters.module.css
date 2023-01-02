@@ -12,15 +12,19 @@
 
 .s1 {
     grid-area: s1;
+    text-align: center;
 }
 .s2 {
     grid-area: s2;
+    text-align: center;
 }
 .s3 {
     grid-area: s3;
+    text-align: center;
 }
 .s4 {
     grid-area: s4;
+    text-align: center;
 }
 
 

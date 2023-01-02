@@ -2,7 +2,6 @@ const getDetailPokemonAPI = require("../controllers/getDetailPokemonAPI.js");
 const getDetailPokemonDb = require("../controllers/getDetailPokemonDb.js");
 
 const getDetailPokemon = async (id) => {
-  console.log(id)
   try {
   //verifico que el ID sea un numero o un string 
   if (id.includes("-")) {

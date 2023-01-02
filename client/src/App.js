@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/home" index element={<Home />} />
+        {access && <Route path="/home" index element={<Home />} />}
         <Route path="/" index element={<LogIn handleSubmit={handleSumit} />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="create" element={<CreatePokemon />} />

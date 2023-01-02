@@ -18,6 +18,7 @@ const getPokemonAPIByName = async (PokemonName) => {
           weight: pokemon.weight,
           image: pokemon.sprites.front_default,
           types: pokemon.types.map((t) => t.type.name),
+          is_default: pokemon.is_default
         };
         return infoEspecific;
     } catch {

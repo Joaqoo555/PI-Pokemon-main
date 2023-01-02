@@ -9,6 +9,7 @@ const createPokemon = async ({
   height,
   weight,
   types,
+  is_default = false
 }) => {
   if (
     !name ||
@@ -34,8 +35,9 @@ const createPokemon = async ({
     speed,
     height,
     weight,
+    is_default
   });
-
+                          //[1,2,3]
   await newPokemon.addType(types);
 
   return newPokemon;

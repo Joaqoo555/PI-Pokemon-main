@@ -80,6 +80,11 @@ module.exports = (dataBase) => {
           max: 9999,
         },
       },
+
+      is_default: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      }
     },
     {
       timestamps: false,

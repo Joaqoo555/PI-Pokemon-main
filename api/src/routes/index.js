@@ -12,11 +12,10 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 //Obtenemos todos los pokemons => la ruta solo trae 20
-router.use("/pokemons", [
-    getAllPokemons, 
+router.use("/pokemons", [getAllPokemons,
     getPokemonById,
-    postPokemon,
-]);
+    postPokemon]);
+
 router.use('/types', Types)
 
 module.exports = router;

@@ -2,6 +2,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { accesFalse } from "../../redux/actions";
 import style from "./navBar.module.css";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineClose } from "react-icons/ai";
+
+import { useState } from "react";
 const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -10,13 +14,21 @@ const NavBar = () => {
     navigate("/");
   };
 
+  const [bar, setbar] = useState(false);
+
   return (
     <nav className={style.nav_bar}>
+      {/* Open slider bar */}
+      {!bar && <GiHamburgerMenu onClick={() => setbar(true)} className={style.open}/>}
 
+      {/* slider Bar */}
+      {bar && (
+        <div className={style.slide_bar}>
+          <AiOutlineClose onClick={() => setbar(false)} className={style.close}/>
 
-      <button onClick={() => logOut()}>Exit</button>
-      
-      
+          <button onClick={() => logOut()} className={style.button_exit}>Exit</button>
+        </div>
+      )}
     </nav>
   );
 };

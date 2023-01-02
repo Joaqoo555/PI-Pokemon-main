@@ -8,10 +8,7 @@ const getTypesDb = async () => {
     try {
       //Array de tipos de pokeons con objetos [{name, url},{name, url}]
       const typesAPI = await getTypesAPI();
-      console.log(typesAPI)
       const namesTypes = typesAPI.map((t) => ({name: t.name}));
-      console.log(namesTypes)
-
       await Type.bulkCreate(namesTypes);
       return namesTypes;
     } catch (error) {

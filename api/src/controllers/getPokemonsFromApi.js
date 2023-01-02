@@ -33,6 +33,7 @@ const getPokemonsFromApi = async () => {
           weight: pokemon.weight,
           image: pokemon.sprites.front_default,
           types: pokemon.types.map((t) => t.type.name),
+          is_default: pokemon.is_default
         }));
         //obtengo el error por si algo falla en alguna de las promesas
       })
