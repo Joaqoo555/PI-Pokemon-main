@@ -11,40 +11,20 @@ import { useDispatch, useSelector } from "react-redux";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const pokemonId = useSelector((state) => state.pokemonId);
-  const pokemonName = useSelector((state) => state.pokemonName);
-  
   const [inps, setInps] = useState(false);
 
-  const [search, setSearch] = useState({
-    name: "",
-    id: "",
-  });
-  const handlerOnChange = ({ target }) => {
-    const valueInp = target.value;
-    const nameInp = target.name;
+  const [search, setSearch] = useState("");
 
-    setSearch({
-      ...search,
-      [nameInp]: valueInp,
-    });
-  };
 
-  const handlerOnKeyDown = (e) => {
-    if (e.keyCode === 13) {
-      if (search.name) {
-        dispatch(getPokemonByName(search.name))
-        setSearch((search)=> search.name = "")
-      } else {
-        dispatch(getPokemonsByID(parseInt(search.id)));
-        setSearch((search)=> search.id = "")
-      }
-    }
-  };
+  const handleSearch = ()=> {
+    dispatch(getPokemonByName(search))
+    setSearch("")
+  }
+
 
   return (
     <header className={style.search_bar}>
-      <NavBar />
+
       {!inps && (
         <BiSearchAlt
           onClick={() => setInps(true)}
@@ -58,28 +38,15 @@ const SearchBar = () => {
             onClick={() => setInps(false)}
             className={`${style.close} ${style.icon}`}
           />
-          <BiSearchAlt className={`${style.icon} ${style.find}`} />
+          <BiSearchAlt className={`${style.icon} ${style.find}`} onClick={handleSearch}/>
           <input
             type="text"
             name="name"
             placeholder="Search for Name"
             className={`${style.search_name} ${style.input}`}
-            onChange={handlerOnChange}
-            
-            autoComplete="off"
-            onKeyDown={handlerOnKeyDown}
-            
-          />
-          <input
-            type="text"
-            name="id"
-            placeholder="Search for Id"
-            className={`${style.search_id} ${style.input}`}
-            onChange={handlerOnChange}
-            
-            autoComplete="off"
-            onKeyDown={handlerOnKeyDown}
-            
+            onChange={({target})=> setSearch(target.value)}
+            autoComplete="off"    
+            value={search}    
           />
         </div>
       )}

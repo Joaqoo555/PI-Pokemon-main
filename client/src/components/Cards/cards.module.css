@@ -1,19 +1,17 @@
+.container_cards{
+    text-align: center;
+}
 .cards {
+    min-width: 100vw;
     padding-top: 20px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.figure {
-
-}
-.img {
-    width: 100%;
-    height: 100%;
-}
-
-.fig_cap{
-    text-align: center;
-    color: aliceblue;
+.button {
+    margin: .5em;
+    width: 70%;
+    padding: .3em;
+    background-color: rgba(87, 185, 83, 0.678);
 }

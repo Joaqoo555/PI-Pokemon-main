@@ -5,6 +5,7 @@ const { Router } = require("express");
 const getAllPokemons = require("./Pokemons.js");
 const getPokemonById = require("./getPokemonById.js");
 const postPokemon = require("./postPokemon.js")
+const getAllPokemonsDb = require("./getAllPokemonsDb.js")
 const Types = require("./Types.js");
 
 const router = Router();
@@ -12,9 +13,12 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 //Obtenemos todos los pokemons => la ruta solo trae 20
-router.use("/pokemons", [getAllPokemons,
+router.use("/pokemons", [
+    getAllPokemonsDb,
+    getAllPokemons,
     getPokemonById,
-    postPokemon]);
+    postPokemon,
+]);
 
 router.use('/types', Types)
 

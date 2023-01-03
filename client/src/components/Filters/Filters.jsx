@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemonsForTypes, getTypes } from "../../redux/actions/index";
+import { getPokemonsForTypes, getTypes, orderAttackHiToLo, orederOriginal, resetOrederAlf } from "../../redux/actions/index";
 import { useEffect, useState } from "react";
 import { getAllPokemons, getPokemonOfDb } from "../../redux/actions/index";
 import style from "./filters.module.css";
@@ -9,7 +9,8 @@ import style from "./filters.module.css";
 const Filters = () => {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
-  const foundPokemons = useSelector((state) => state.foundPokemons);
+
+
   const [options, setOptions] = useState({
     types: "",
     is_default: undefined,
@@ -19,8 +20,10 @@ const Filters = () => {
 
   //Resetea el option default de pokemons si no encuentra ninguno con ese nombre
   const resetPokemonsTypes = () => {
-    setOptions({ ...options, types: "" });
-    dispatch(getAllPokemons());
+    dispatch(getAllPokemons())
+    setOptions({ ...options, types: ""});
+    dispatch(orederOriginal())
+    dispatch(resetOrederAlf())
   };
 
   //Obtiene los typos segun donde se pare el selector el ususario, aparte despacha el valor de ese selector para traer solo los de ese tipo.
@@ -29,36 +32,28 @@ const Filters = () => {
     dispatch(getPokemonsForTypes(target.value));
   };
 
-  //Origen de pokemons
-  // const resetPokemonsOrigin = () => {
-  //   setOptions({...options, is_default: true})
-  // }
-
   const handleOnChangeOrigin = ({target})=> {
     
     if(JSON.parse(target.value) === false){
       dispatch(getPokemonOfDb())
+      setOptions({ ...options, types: "" });
     }
       else if(JSON.parse(target.value) === true){
         dispatch(getAllPokemons())
+        setOptions({ ...options, types: "" });
       }
     
   }
-  
 
-
-  //Obtener y renderizar los tipos de pokemons desde la db
+  //Obtener y renderizar los tipos de pokemons desde la db y todos los pokemons
   useEffect(() => {
+    dispatch(getAllPokemons())
     dispatch(getTypes());
-  }, [dispatch]);
-
-  //resetear filtrado de los tipos de pokemons
-  useEffect(() => {
-    resetPokemonsTypes();
-  }, [foundPokemons]);
+  }, []);
 
   return (
-    <form className={style.container}>
+    <div className={style.container_filters}>
+<form className={style.container}>
       {/* first select */}
       <select
         name="types"
@@ -78,30 +73,15 @@ const Filters = () => {
 
       {/* seundo select */}
       <select name="origen" className={style.s2} value={options.is_default} onChange={handleOnChangeOrigin}>
-        <option value="" key="default" hidden defaultValue={"Origen"}>
-          Origen
-        </option>
-          <option value={true}>Pokemons por default</option>
+          <option value={true}>Pokemons por Default</option>
           <option value={false}>Pokemons por de DB</option>
 
       </select>
-
-      {/* tercer select */}
-      <select name="types" className={style.s3}>
-        <option value="" key="default" hidden defaultValue={"Tipos"}>
-          Ataque
-        </option>
-        <option value=""></option>
-      </select>
-
-      {/* cuarto select */}
-
-      <select name="types" className={style.s4}>
-        <option value="" key="default" hidden defaultValue={"Tipos"}>
-          Orden Alfabetico
-        </option>
-      </select>
     </form>
+      <button className={style.reset_pokemons} onClick={resetPokemonsTypes}>Resetear pokemons</button>
+        
+    </div>
+    
   );
 };
 

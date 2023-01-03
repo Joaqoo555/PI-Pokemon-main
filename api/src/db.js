@@ -57,7 +57,7 @@ dataBase.models = Object.fromEntries(capsEntries);
 
 const { Pokemon, Type } = dataBase.models;
 Pokemon.belongsToMany(Type, {through: "PokemonsTypes"});
-Type.belongsToMany(Pokemon, {through : "PokemonsTypes"})
+Type.belongsToMany(Pokemon, {through : "PokemonsTypes"});
 
 
 // Aca vendrian las relaciones

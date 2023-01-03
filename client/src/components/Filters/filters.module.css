@@ -1,3 +1,10 @@
+.container_filters {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .container {
     max-width: 800px;
     width: 100%;
@@ -34,4 +41,18 @@ select {
     border: none;
     margin: 1em;
     border-radius: .2em;
+}
+.reset_pokemons {
+    max-width: 10em;
+    width: 80%;
+    margin-top: 2em;
+    border-radius: .2em;
+    cursor: pointer;
+    height: 2em;
+    background-color: #ec252570;
+    color: #000000;
+    transition: .8s;
+}
+.reset_pokemons:hover {
+    background-color: #e64949;
 }

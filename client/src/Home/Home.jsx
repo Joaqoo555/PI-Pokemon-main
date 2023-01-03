@@ -3,7 +3,9 @@ import SearchBar from "../components/SearchBar/SearchBar.jsx";
 import Filters from "../components/Filters/Filters.jsx";
 import Cards from "../components/Cards/Cards";
 
+
 const Home = () => {
+
   return (
     <div className={style.body}>
       <SearchBar />

@@ -1,19 +1,19 @@
 import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import LogIn from "./components/LogIn/LogIn.jsx";
 import Home from "./Home/Home.jsx";
 import CreatePokemon from "./components/CreatePokemon/CreatePokemon.jsx";
 import Detail from "./components/Detail/Detail.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { accesTrue } from "./redux/actions/index.js";
-
+import NavBar from "./components/NavBar/NavBar.jsx";
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const access = useSelector(state => state.access)
+  const access = useSelector((state) => state.access);
   const handleSumit = () => {
-    dispatch(accesTrue())
+    dispatch(accesTrue());
     navigate("/home");
   };
   useEffect(() => {
@@ -23,10 +23,17 @@ function App() {
   return (
     <>
       <Routes>
-        {access && <Route path="/home" index element={<Home />} />}
-        <Route path="/" index element={<LogIn handleSubmit={handleSumit} />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="create" element={<CreatePokemon />} />
+      <Route path="/" element={<LogIn handleSubmit={handleSumit} />}>
+        </Route>
+        {access && (
+          <Route path="/home" element={<NavBar />}>
+            <Route index element={<Home />}/>
+            <Route path="detail/:id" element={<Detail />} />
+            <Route path="create" element={<CreatePokemon />} />
+            <Route path="*" element={<Navigate replace to="/"/>}/>
+          </Route>
+        )}
+
       </Routes>
     </>
   );

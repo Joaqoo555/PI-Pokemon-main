@@ -2,7 +2,7 @@
     min-width: 100px;
     width: 150px;
     min-height: 150px;
-    max-height: 200px;
+    max-height: 250px;
     background: #FFC8A9;
     margin-bottom: 20px;
     border-radius: .2em;
@@ -19,4 +19,18 @@
 }
 .img{
     width: 150px;
+}
+.container_types{
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.type{
+    margin: .8em 0;
+    padding: .2em;
+    border-radius: .3em;
+    box-shadow: 0 0 5px 0 #333;
+    width: 40%;
+    background-color: rgba(192, 88, 88, 0.712);
+    color: #000000;
 }
