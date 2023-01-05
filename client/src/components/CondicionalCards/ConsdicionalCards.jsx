@@ -20,6 +20,7 @@ const ConsdicionalCards = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         : a_z ? 
@@ -45,6 +46,7 @@ const ConsdicionalCards = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         : z_a && 
@@ -70,6 +72,7 @@ const ConsdicionalCards = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         }

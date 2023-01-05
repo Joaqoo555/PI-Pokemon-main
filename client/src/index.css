@@ -8,10 +8,10 @@
     --color-border-button_go: rgba(0, 0, 0, 0.705);
 
 
-    --color-background-principal: #3D3D3D;
-    --color-background-header: #FF4848;
+    --color-background-principal: #2b292c;
+    --color-background-header: #d53b47;
     --color-background-filter: rgba(155, 155, 155, 0.801);
-    
+    --color-cards: #f8a060;
 }
 h1,h2,h3,h4 {
     font-family: 'Source Serif Pro', serif;

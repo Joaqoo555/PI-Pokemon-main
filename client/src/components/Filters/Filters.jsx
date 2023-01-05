@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemonsForTypes, getTypes, orderAttackHiToLo, orederOriginal, resetOrederAlf } from "../../redux/actions/index";
+import { getPokemonsForTypes, getTypes, orederOriginal, resetOrederAlf } from "../../redux/actions/index";
 import { useEffect, useState } from "react";
 import { getAllPokemons, getPokemonOfDb } from "../../redux/actions/index";
 import style from "./filters.module.css";
@@ -13,7 +13,7 @@ const Filters = () => {
 
   const [options, setOptions] = useState({
     types: "",
-    is_default: undefined,
+    is_default: "",
   });
 
   //typos de pokemons
@@ -21,7 +21,7 @@ const Filters = () => {
   //Resetea el option default de pokemons si no encuentra ninguno con ese nombre
   const resetPokemonsTypes = () => {
     dispatch(getAllPokemons())
-    setOptions({ ...options, types: ""});
+    setOptions({ ...options, types: "", is_default: ""});
     dispatch(orederOriginal())
     dispatch(resetOrederAlf())
   };
@@ -36,20 +36,19 @@ const Filters = () => {
     
     if(JSON.parse(target.value) === false){
       dispatch(getPokemonOfDb())
-      setOptions({ ...options, types: "" });
+      setOptions({ types: "" });
     }
       else if(JSON.parse(target.value) === true){
         dispatch(getAllPokemons())
-        setOptions({ ...options, types: "" });
+        setOptions({ types: "" });
       }
     
   }
-
+  
   //Obtener y renderizar los tipos de pokemons desde la db y todos los pokemons
   useEffect(() => {
-    dispatch(getAllPokemons())
     dispatch(getTypes());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={style.container_filters}>
@@ -73,12 +72,13 @@ const Filters = () => {
 
       {/* seundo select */}
       <select name="origen" className={style.s2} value={options.is_default} onChange={handleOnChangeOrigin}>
+          <option value="" hidden >Creados o Fefault</option>
           <option value={true}>Pokemons por Default</option>
           <option value={false}>Pokemons por de DB</option>
 
       </select>
     </form>
-      <button className={style.reset_pokemons} onClick={resetPokemonsTypes}>Resetear pokemons</button>
+      <button className={style.reset_pokemons} onClick={resetPokemonsTypes}>Resetear Filtros</button>
         
     </div>
     

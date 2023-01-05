@@ -21,6 +21,7 @@ const OrderLowToHight = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         : a_z ? 
@@ -46,6 +47,7 @@ const OrderLowToHight = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         : z_a && 
@@ -71,6 +73,7 @@ const OrderLowToHight = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         }

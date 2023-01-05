@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import LogIn from "./components/LogIn/LogIn.jsx";
-import Home from "./Home/Home.jsx";
-import CreatePokemon from "./components/CreatePokemon/CreatePokemon.jsx";
-import Detail from "./components/Detail/Detail.jsx";
+import Home from "./pages/Home/Home.jsx";
+import CreatePokemon from "./pages/CreatePokemon/CreatePokemon.jsx";
+import Detail from "./pages/Detail/Detail.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { accesTrue } from "./redux/actions/index.js";
 import NavBar from "./components/NavBar/NavBar.jsx";

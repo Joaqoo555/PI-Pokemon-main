@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 
@@ -22,6 +21,7 @@ const OrderHightToLow = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         : a_z ? 
@@ -47,6 +47,7 @@ const OrderHightToLow = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
         : z_a && 
@@ -72,6 +73,7 @@ const OrderHightToLow = ({ pagina, porPagina }) => {
             image={p.image}
             types={p.types}
             id={p.id}
+            attack={p.attack}
           />
         ))
 

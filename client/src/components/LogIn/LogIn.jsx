@@ -1,6 +1,13 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllPokemons } from "../../redux/actions";
 import style from "./logIn.module.css";
 
 const LogIn = ({ handleSubmit }) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllPokemons())
+  }, [dispatch]);
   return (
     <form
       onSubmit={(e) => {

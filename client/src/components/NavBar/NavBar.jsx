@@ -17,20 +17,22 @@ const NavBar = () => {
   const [bar, setbar] = useState(false);
 
   return (
-    <nav className={style.nav_bar}>
-      {/* Open slider bar */}
-      {!bar && <GiHamburgerMenu onClick={() => setbar(true)} className={style.open}/>}
+    <nav >
+    <section className={style.nav_bar}>
+        {/* Open slider bar */}
+        {!bar && <GiHamburgerMenu onClick={() => setbar(true)} className={style.open}/>}
 
-      {/* slider Bar */}
-      {bar && (
-        <div className={style.slide_bar}>
-          <AiOutlineClose onClick={() => setbar(false)} className={style.close}/>
-          <button className={style.create_pokemon}><Link to="/home/create" className={style.link}>Crear Pokemon</Link></button>
-          <button className={style.home}><Link to="/home" className={style.link}>Home</Link></button>
+{/* slider Bar */}
+{bar && (
+  <div className={style.slide_bar}>
+    <AiOutlineClose onClick={() => setbar(false)} className={style.close}/>
+    <button className={style.create_pokemon}><Link to="/home/create" className={style.link}>Crear Pokemon</Link></button>
+    <button className={style.home}><Link to="/home" className={style.link}>Home</Link></button>
 
-          <button onClick={() => logOut()} className={style.button_exit}>Exit</button>
-        </div>
-      )}
+    <button onClick={() => logOut()} className={style.button_exit}>Exit</button>
+  </div>
+)}
+    </section>
       <section>
       <Outlet>
         

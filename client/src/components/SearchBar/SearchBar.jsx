@@ -1,13 +1,12 @@
-import NavBar from "../NavBar/NavBar.jsx";
 import style from "./searchBar.module.css";
 
 import { BiSearchAlt } from "react-icons/bi";
 import { CgCloseR } from "react-icons/cg";
 
-import { getPokemonByName, getPokemonsByID } from "../../redux/actions/index";
+import { getPokemonByName } from "../../redux/actions/index";
 
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
   const dispatch = useDispatch();

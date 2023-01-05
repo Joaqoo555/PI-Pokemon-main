@@ -1,3 +1,8 @@
+.link{
+    font-style: none;
+    text-decoration: none;
+    color: #000000;
+}
 .card{
     min-width: 100px;
     width: 150px;
@@ -33,4 +38,7 @@
     width: 40%;
     background-color: rgba(192, 88, 88, 0.712);
     color: #000000;
+}
+.text {
+    margin: 0;
 }

@@ -15,7 +15,6 @@ const getTypesDb = async () => {
       throw new Error(error.message);
     }
   }
-  console.log(typesDb)
   return typesDb;
 };
 module.exports = getTypesDb;

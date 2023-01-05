@@ -10,11 +10,10 @@
     width: 100%;
     background-color: var(--color-background-filter);
     border-radius: 8px;
-    height: 20vh;
+    height: 10vh;
     display: grid;
-    grid-template-areas: "s1 s2"
-                        "s3 s4";
-    padding: 1.2em;
+    grid-template-areas: "s1 s2";   
+    padding: .1em;
 }
 
 .s1 {
@@ -25,14 +24,7 @@
     grid-area: s2;
     text-align: center;
 }
-.s3 {
-    grid-area: s3;
-    text-align: center;
-}
-.s4 {
-    grid-area: s4;
-    text-align: center;
-}
+
 
 
 
@@ -49,7 +41,7 @@ select {
     border-radius: .2em;
     cursor: pointer;
     height: 2em;
-    background-color: #ec252570;
+    background-color: #e02828bf;
     color: #000000;
     transition: .8s;
 }

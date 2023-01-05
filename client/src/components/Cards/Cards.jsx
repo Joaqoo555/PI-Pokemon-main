@@ -1,5 +1,4 @@
 //Componentes
-import Card from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import OrderHightToLow from "../CondicionalCards/OrderHightToLow";
 import ConsdicionalCards from "../CondicionalCards/ConsdicionalCards";
@@ -10,19 +9,26 @@ import LoadingPokemons from "../../Layouts/LoadingPokemons/LoadingPokemons";
 
 //Hooks
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 //Css, img
 import style from "./cards.module.css";
 import NotFoundPokemons from "../../Layouts/NotFoundPokemons/NotFoundPokemons";
-import { order_A_Z, order_Z_A, orederHigth, orederlow, resetOrederAlf } from "../../redux/actions";
+
+//actions
+import {
+  order_A_Z,
+  order_Z_A,
+  orederHigth,
+  orederlow,
+  resetOrederAlf,
+} from "../../redux/actions";
 
 const Cards = () => {
   const dispatch = useDispatch();
   //pokemons api y db
   const pokemons = useSelector((state) => state.pokemons);
   const order = useSelector((state) => state.order);
-
+  console.log(pokemons)
   //pokemons encontrados
   const foundPokemons = useSelector((state) => state.foundPokemons);
 
@@ -32,24 +38,34 @@ const Cards = () => {
   const maximo = pokemons.length / porPagina;
   return (
     <div className={style.container_cards}>
-      <button onClick={() => {
-        dispatch(orederHigth())
-        dispatch(resetOrederAlf())
-      }} className={style.button}>
-        Ordenar de mayor ataque a menor
-      </button>
-      <button onClick={() => {
-        dispatch(orederlow())
-        dispatch(resetOrederAlf())
-        }} className={style.button}>
-        Ordenar de mayor menor a mayor
-      </button>
-      <button onClick={() => dispatch(order_A_Z())} className={style.button}>
-        a-z
-      </button>
-      <button onClick={() => dispatch(order_Z_A())} className={style.button}>
-        z-a
-      </button>
+      <div className={style.container_buttons}>
+        <button
+          onClick={() => {
+            dispatch(orederHigth());
+            dispatch(resetOrederAlf());
+          }}
+          className={style.button}
+        >
+          Ordenar de mayor ataque a menor
+        </button>
+        <button
+          onClick={() => {
+            dispatch(orederlow());
+            dispatch(resetOrederAlf());
+          }}
+          className={style.button}
+        >
+          Ordenar de mayor menor a mayor
+        </button>
+      </div>
+      <div className={style.container_buttons}>
+        <button onClick={() => dispatch(order_A_Z())} className={style.button}>
+          a-z
+        </button>
+        <button onClick={() => dispatch(order_Z_A())} className={style.button}>
+          z-a
+        </button>
+      </div>
       <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
       <div className={style.cards}>
         {/* valido que no haya nada en los dos estados independientes de pokemons */}
@@ -59,13 +75,13 @@ const Cards = () => {
             //espero que mi array de pokemons se establezca, mientras carga hay una pantalla de carga
             pokemons.length > 0 ? (
               !order.orderHiTolow && !order.orderLowToHi ? (
-                <ConsdicionalCards pagina={pagina} porPagina={porPagina}/>
+                <ConsdicionalCards pagina={pagina} porPagina={porPagina} />
               ) : order.orderHiTolow ? (
-                <OrderHightToLow pagina={pagina} porPagina={porPagina}/>
+                <OrderHightToLow pagina={pagina} porPagina={porPagina} />
               ) : (
                 order.orderLowToHi && (
-                  <OrderLowToHight pagina={pagina} porPagina={porPagina}/>
-                ) 
+                  <OrderLowToHight pagina={pagina} porPagina={porPagina} />
+                )
               )
             ) : (
               //GIF de carga de pokemons

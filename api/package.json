@@ -10,6 +10,7 @@
     "getDetails": "nodemon ./src/controllers/getDetailPokemonAPI.js",
     "routeDetail": "nodemon ./src/routes/getPokemonById.js",
     "getTypes": "nodemon ./src/controllers/getTypesDb.js",
+    "obtenerDataDesdeElRut": "nodemon ./src/routes/Pokemons.js",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Henry",
