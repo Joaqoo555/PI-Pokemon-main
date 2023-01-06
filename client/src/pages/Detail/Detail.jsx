@@ -2,6 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPokemonsByID } from "../../redux/actions";
 import { useParams } from "react-router-dom";
+
+import LoadingPokemons from "../../Layouts/LoadingPokemons/LoadingPokemons"
+
 import style from "./detail.module.css"
 const Detail = () => {
   const {id} = useParams()
@@ -12,7 +15,13 @@ const Detail = () => {
   const pokemonId = useSelector(state=> state.pokemonId)
   return (
     <section className={style.pokemon}>
-      <article className={style.container_img_tittle}>
+      {!pokemonId.types ? 
+      <div className={style.loading}>
+        <LoadingPokemons/>
+      </div>
+      :
+      <div>
+        <article className={style.container_img_tittle}>
       <div className={style.back_img}>
       <figure className={style.container_img}>
         <img src={pokemonId.image} alt={pokemonId.name} className={style.img}/>
@@ -62,6 +71,9 @@ const Detail = () => {
 
           </main>
         </article>
+      </div>
+        }
+        
     </section>
   );
 };

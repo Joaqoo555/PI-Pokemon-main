@@ -13,7 +13,10 @@ import {
   ORDER_ALF_A_TO_Z,
   ORDER_ALF_Z_TO_A,
   ORDER_ALF_DEFAULT,
+  ERROR_GET_POKEMON_NAME,
+  ERROR_GET_POKEMONS_DB,
 } from "../actions/index.js";
+
 
 const initialState = {
   foundPokemons: true,
@@ -33,35 +36,65 @@ const initialState = {
 
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    //caso que no encuentro un pokemon por name, cambio el estado de encontrado para renderizar imagen
+    case ERROR_GET_POKEMON_NAME: 
+    return {...state, foundPokemons: false, pokemons: []}
+    
+    //caso que no se encuentran pokemons creados por el usuario en el filtrado
+    case ERROR_GET_POKEMONS_DB: 
+    return {...state, foundPokemons: false, pokemons: []}
+    
+//--------------------------------------------------------------------------------
+    //Busco todos los pokemons y seteo el found en true, asi me renderiza las cards
     case GET_ALL_POKEMONS:
       return { ...state, pokemons: payload, foundPokemons: true };
-
+      
+//--------------------------------------------------------------------------------
+      
+      //Obtengo tipos desde el back
     case GET_TYPES:
       return { ...state, types: payload };
-
+      
+//--------------------------------------------------------------------------------
+      
+      //Filtro los pokemons que tengo en el estado global segun los tipos que me indica desde el payload
     case GET_POKEMON_TYPE:
       state.pokemons = state.pokemons.filter((pokemon) => {
         return pokemon.types.some((type) => type === payload);
       });
+      //si no encuentra ninguno renderizo la imagen de not found, a la vez seteo el estado de los pokemons como antes
       if (state.pokemons.length === 0)
-        return { ...state, foundPokemons: false };
+        return { ...state, foundPokemons: false, pokemons: []};
       return { ...state, pokemons: state.pokemons };
 
+
+//--------------------------------------------------------------------------------
+
+      //Obtengo el pokemon por name desde el back en forma de array con un solo objeto, asi puedo renderizar la card en el front
     case GET_POKEMON_NAME:
       return { ...state, pokemons: payload };
 
+
+      //Obtengo pokemon por Id desde el back para renderizarlo en la ruta detail
     case GET_POKEMON_ID:
       return { ...state, pokemonId: payload };
 
     //--------------------------------------------------------
-
+      //cambio el acceso a true para acceder a la home
     case SET_ACCES_TRUE:
       return { ...state, access: true };
+      //si intentan navergar a otra ruta sin el acceso en true, los redirige a la landing page
     case SET_ACCES_FALSE:
       return { ...state, access: false };
 
+//--------------------------------------------------------------------------------
+
+      //Filtrado para traer solo los pokemons de la base de datos
     case GET_POKEMON_ORIGIN_DB:
       return { ...state, pokemons: payload };
+
+
+//--------------------------------------------------------------------------------
 
       //Ordenamiento de pokemons para manejar renderizados condicionales en cards
       case ORDER_LOW: 
@@ -79,7 +112,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
         orderHiTolow: false,
         orderLowToHi: false,
       }}
-
+//--------------------------------------------------------------------------------
+//ordenamiento de pokemons alfabetico
       case ORDER_ALF_A_TO_Z:
         return { ...state, orderAlf: {
           a_z: true,
@@ -95,7 +129,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
           a_z: false,
           z_a: false,
         } }
-
+//retorno el estado inicial
     default:
       return initialState;
   }

@@ -19,6 +19,7 @@ const getPokemonsFromDb = async () => {
       pokemon.types = pokemon.types.map(t => t.name);
       return pokemon;
   })
+  
     return infoDb;
   } catch (error) {
     throw new Error(error.message);

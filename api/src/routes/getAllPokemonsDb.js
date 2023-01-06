@@ -4,6 +4,7 @@ const getPokemonsFromDb = require("../controllers/getPokemonsFromDb.js");
 router.get("/dataBase", async (req, res) => {
   try {
     const pokemons = await getPokemonsFromDb();
+    if(!pokemons.length) throw new Error("No se encontro pokemons en la Db")
     res.json(pokemons);
   } catch (error) {
     res.status(400).send(error.message);

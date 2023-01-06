@@ -4,7 +4,7 @@ const getPokemonByName = require("../controllers/getPokemonByName.js")
 
 
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
 
     let { name } = req.query;
@@ -14,9 +14,9 @@ router.get("/", async (req, res) => {
       return res.status(200).json(pokemon);
     }
     const pokemons = await getAllPokemons();
-    res.json(pokemons);
+    return res.json(pokemons);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(404).send(error.message)
   }
 });
 

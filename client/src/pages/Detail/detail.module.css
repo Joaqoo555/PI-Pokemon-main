@@ -1,5 +1,4 @@
 .pokemon{
-    padding-top: 90px;
     background-color: var(--color-background-principal);
     color: aliceblue;
     height: 100vh;
@@ -104,7 +103,13 @@
     border-radius: 20px;
     height: .8em;
 }
-
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+}
 /* @keyframes progressbar {
 
     0% (

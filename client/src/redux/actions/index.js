@@ -1,3 +1,10 @@
+import axios from "axios"
+
+const POST_POKEMON = "POST_POKEMON"
+
+const ERROR_GET_POKEMON_NAME = "ERROR_GET_POKEMON_NAME"
+const ERROR_GET_POKEMONS_DB = "ERROR_GET_POKEMONS_DB"
+
 const GET_ALL_POKEMONS = "GET_ALL_POKEMONS";
 const GET_POKEMON_ID = "GET_POKEMON_ID";
 const GET_POKEMON_NAME = "GET_POKEMON_NAME";
@@ -34,6 +41,10 @@ export {
   ORDER_ALF_A_TO_Z,
   ORDER_ALF_Z_TO_A,
   ORDER_ALF_DEFAULT,
+  POST_POKEMON,
+  ERROR_GET_POKEMON_NAME,
+  ERROR_GET_POKEMONS_DB
+
 };
 
 export const getTypes = () => async (dispatch) => {
@@ -55,24 +66,34 @@ export const getPokemonsByID = (id) => async (dispatch) => {
 };
 
 export const getPokemonByName = (name) => async (dispatch) => {
+try {
   const resolve = await fetch(`http://localhost:3001/pokemons?name=${name}`);
-  const data = await resolve.json();
+  const data = await resolve.json()
   return dispatch({ type: GET_POKEMON_NAME, payload: data });
+} catch {
+  return dispatch({type: ERROR_GET_POKEMON_NAME})
+}
+
 };
 
 //acces en la pagina de inicio.
 export const accesTrue = () => {
   return { type: SET_ACCES_TRUE };
 };
-
 export const accesFalse = () => {
   return { type: SET_ACCES_FALSE };
 };
 
+
+//Obtengo los pokemons de la db
 export const getPokemonOfDb = () => async (dispatch) => {
-  const resolve = await fetch("http://localhost:3001/pokemons/dataBase");
-  let payload = await resolve.json();
-  return dispatch({ type: GET_POKEMON_ORIGIN_DB, payload });
+  try {
+    const resolve = await fetch("http://localhost:3001/pokemons/dataBase");
+    let payload = await resolve.json();
+    return dispatch({ type: GET_POKEMON_ORIGIN_DB, payload });
+  } catch (error) {
+    dispatch({type: ERROR_GET_POKEMONS_DB})
+  }
 };
 
 export const getPokemonsForTypes = (payload) => ({
@@ -87,3 +108,15 @@ export const orederlow = () => ({ type: ORDER_LOW });
 export const resetOrederAlf = () => ({ type: ORDER_ALF_DEFAULT });
 export const order_A_Z = () => ({ type: ORDER_ALF_A_TO_Z });
 export const order_Z_A = () => ({ type: ORDER_ALF_Z_TO_A });
+
+
+export const createPokemon = (pokemonCreated)=> async dispatch => {
+  try {
+    axios.post("http://localhost:3001/pokemons", pokemonCreated);
+    // return dispatch({type: POST_POKEMON, payload: response})
+  } catch (error) {
+    console.log("Entro al error")
+    console.log(error.message)
+  }
+
+} 
