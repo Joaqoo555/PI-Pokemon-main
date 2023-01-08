@@ -33,7 +33,8 @@ const Cards = () => {
   const foundPokemons = useSelector((state) => state.foundPokemons);
 
   //Paginado
-  const [pagina, setPagina] = useState(1);
+  // const [pagina, setPagina] = useState(1);
+  const pagina = useSelector(state => state.pages)
   const porPagina = 12;
   const maximo = pokemons.length / porPagina;
   return (
@@ -66,7 +67,7 @@ const Cards = () => {
           z-a
         </button>
       </div>
-      <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
+      <Paginado maximo={maximo} />
       <div className={style.cards}>
         {/* valido que no haya nada en los dos estados independientes de pokemons */}
         {

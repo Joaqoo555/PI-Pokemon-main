@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemonsForTypes, getTypes, orederOriginal, resetOrederAlf } from "../../redux/actions/index";
+import { getPokemonsForTypes, getTypes, orederOriginal, resetOrederAlf, setInput, setPagina } from "../../redux/actions/index";
 import { useEffect, useState } from "react";
 import { getAllPokemons, getPokemonOfDb } from "../../redux/actions/index";
 import style from "./filters.module.css";
@@ -20,20 +20,29 @@ const Filters = () => {
 
   //Resetea el option default de pokemons si no encuentra ninguno con ese nombre
   const resetPokemonsTypes = () => {
+    //cada vez que se reinicia todos los filtrados y ordenamientos se setean la pagina en 1
     dispatch(getAllPokemons())
     setOptions({ ...options, types: "", is_default: ""});
     dispatch(orederOriginal())
     dispatch(resetOrederAlf())
+    dispatch(setPagina(1))
+    dispatch(setInput(1))
   };
 
   //Obtiene los typos segun donde se pare el selector el ususario, aparte despacha el valor de ese selector para traer solo los de ese tipo.
   const handleOnChangeTypes = ({ target }) => {
+    //cada vez que se llama la funcion de filtrado por tipos se setea la pagina a 1
     setOptions({ ...options, types: target.value });
     dispatch(getPokemonsForTypes(target.value));
+    dispatch(setPagina(1))
+    dispatch(setInput(1))
   };
 
   const handleOnChangeOrigin = ({target})=> {
-    
+    //Cada vess que se activa la funcion de filtrado me setea la pagina en 1 devuelta
+    dispatch(setPagina(1))
+    dispatch(setInput(1))
+
     if(JSON.parse(target.value) === false){
       dispatch(getPokemonOfDb())
       setOptions({ types: "" });
@@ -42,7 +51,6 @@ const Filters = () => {
         dispatch(getAllPokemons())
         setOptions({ types: "" });
       }
-    
   }
   
   //Obtener y renderizar los tipos de pokemons desde la db y todos los pokemons

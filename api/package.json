@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L",
+    "start": "node ./index",
     "getApi": "nodemon ./src/controllers/getPokemonsFromApi.js",
     "getAll": "nodemon ./src/controllers/getAllPokemons.js",
     "getDetails": "nodemon ./src/controllers/getDetailPokemonAPI.js",

@@ -1,38 +1,43 @@
 import React from "react";
 import style from "./paginado.module.css";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setInput, setPagina } from "../../redux/actions";
 
+const Paginado = ({ maximo }) => {
+  const pagina = useSelector(state => state.pages)
+  const input = useSelector(state => state.input)
 
-
-const Paginado = ({ pagina, setPagina, maximo }) => {
-  const [input, setInput] = useState(1);
+  // const [input, setInput] = useState(1);
+  
+  const dispatch = useDispatch()
   const nextPage = () => {
-    setInput(parseInt(input) + 1);
-    setPagina(parseInt(pagina) + 1);
+    dispatch(setInput(parseInt(input) + 1));
+    dispatch(setPagina(parseInt(pagina) + 1));
   };
 
   const prevPage = () => {
-    setInput(parseInt(input) - 1);
-    setPagina(parseInt(pagina) - 1);
+    dispatch(setInput(parseInt(input) - 1));
+    dispatch(setPagina(parseInt(pagina) - 1));
   };
 
   const handlerOnKeyDown = (e) => {
     if (e.keyCode === 13) {
-      setPagina(parseInt(e.target.value));
+      dispatch(setPagina(parseInt(e.target.value)));
       if (
         parseInt(e.target.value) < 1 ||
         parseInt(e.target.value) > Math.ceil(maximo) ||
         isNaN(parseInt(e.target.value))
       ) {
-        setPagina(1);
-        setInput(1);
+        dispatch(setPagina(1));
+        dispatch(setInput(1));
       } else {
-        setPagina(parseInt(e.target.value));
+        dispatch(setPagina(parseInt(e.target.value)));
       }
     }
   };
   const handlerOnChange = ({ target }) => {
-    setInput(target.value);
+    dispatch(setInput(target.value));
   };
   return (
     <div className={style.container}>

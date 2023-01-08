@@ -4,11 +4,11 @@ const createPokemon = require("../controllers/createPokemon.js")
 router.post("/", async (req, res) => {
     try {
         const pokemon = req.body;
-        const newPokemon = await createPokemon(pokemon)
+        await createPokemon(pokemon)
         
-        res.status(201).send(newPokemon)
+        res.status(201).send("Pokemon creado con exito")
     } catch (error) {
-        res.status(404).send(error.message)
+        res.status(400).json(error)
     }
 
 });

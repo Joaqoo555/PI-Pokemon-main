@@ -19,7 +19,7 @@ module.exports = (dataBase) => {
         allowNull: false,
         unique: true,
         validate: {
-          len: [4, 20],
+          len: [2, 20],
           notNull: {
             msg: "Please enter your name",
           },
@@ -31,7 +31,7 @@ module.exports = (dataBase) => {
         validate: {
           isNumeric: true,
           min: 0,
-          max: 9999,
+          max: 200,
         },
       },
       attack: {
@@ -40,7 +40,7 @@ module.exports = (dataBase) => {
         validate: {
           isNumeric: true,
           min: 0,
-          max: 9999,
+          max: 200,
         },
       },
       defense: {
@@ -49,7 +49,7 @@ module.exports = (dataBase) => {
         validate: {
           isNumeric: true,
           min: 0,
-          max: 9999,
+          max: 200,
         },
       },
       speed: {
@@ -58,7 +58,7 @@ module.exports = (dataBase) => {
         validate: {
           isNumeric: true,
           min: 0,
-          max: 9999,
+          max: 200,
         },
       },
       height: {
@@ -67,7 +67,7 @@ module.exports = (dataBase) => {
         validate: {
           isNumeric: true,
           min: 0,
-          max: 9999,
+          max: 200,
         },
       },
 
@@ -77,7 +77,7 @@ module.exports = (dataBase) => {
         validate: {
           isNumeric: true,
           min: 0,
-          max: 9999,
+          max: 200,
         },
       },
 
