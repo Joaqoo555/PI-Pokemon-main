@@ -70,6 +70,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       //si no encuentra ninguno renderizo la imagen de not found, a la vez seteo el estado de los pokemons como antes
       if (state.pokemons.length === 0)
         return { ...state, foundPokemons: false, pokemons: []};
+        
       return { ...state, pokemons: state.pokemons };
 
 
