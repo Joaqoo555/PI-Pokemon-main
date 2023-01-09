@@ -1,6 +1,11 @@
+//hook
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+//actions
 import { getAllPokemons } from "../../redux/actions";
+
+//css
 import style from "./logIn.module.css";
 
 const LogIn = ({ handleSubmit }) => {

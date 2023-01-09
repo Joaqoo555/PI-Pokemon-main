@@ -16,7 +16,6 @@ import {
   SET_PAGES,
   SET_INPUT,
   ERROR_GET_POKEMON_NAME,
-  ERROR_GET_POKEMONS_DB,
 
 } from "../actions/index.js";
 
@@ -43,10 +42,6 @@ const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     //caso que no encuentro un pokemon por name, cambio el estado de encontrado para renderizar imagen
     case ERROR_GET_POKEMON_NAME: 
-    return {...state, foundPokemons: false, pokemons: []}
-    
-    //caso que no se encuentran pokemons creados por el usuario en el filtrado
-    case ERROR_GET_POKEMONS_DB: 
     return {...state, foundPokemons: false, pokemons: []}
     
 //--------------------------------------------------------------------------------

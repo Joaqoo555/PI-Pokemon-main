@@ -6,7 +6,7 @@ router.post("/", async (req, res) => {
         const pokemon = req.body;
         await createPokemon(pokemon)
         
-        res.status(201).send("Pokemon creado con exito")
+        res.status(201).send(pokemon)
     } catch (error) {
         res.status(400).json(error)
     }
