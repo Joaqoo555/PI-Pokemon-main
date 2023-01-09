@@ -80,7 +80,6 @@ const CreatePokemon = () => {
   const hanldeOnSubmit = (e)=> {
     e.preventDefault()
     if(!Object.entries(error).length){
-      alert("creado")
       dispatch(createPokemon(pokemon))
       setPokemon({
           name: "",
@@ -95,6 +94,7 @@ const CreatePokemon = () => {
           is_default: false,
         })
     }
+    e.target.reset()
   }
   return (
     <div className={style.container_create}>
@@ -127,7 +127,6 @@ const CreatePokemon = () => {
                 id={t.id}
                 onChange={handleOnChangeCheckbox}
                 name={t.name}
-                
               />
             </section>
           ))}

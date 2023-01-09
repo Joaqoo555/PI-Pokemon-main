@@ -1,9 +1,9 @@
-import axios from "axios"
+import axios from "axios";
 
-const POST_POKEMON = "POST_POKEMON"
+const POST_POKEMON = "POST_POKEMON";
 
-const ERROR_GET_POKEMON_NAME = "ERROR_GET_POKEMON_NAME"
-const ERROR_GET_POKEMONS_DB = "ERROR_GET_POKEMONS_DB"
+const ERROR_GET_POKEMON_NAME = "ERROR_GET_POKEMON_NAME";
+const ERROR_GET_POKEMONS_DB = "ERROR_GET_POKEMONS_DB";
 
 const GET_ALL_POKEMONS = "GET_ALL_POKEMONS";
 const GET_POKEMON_ID = "GET_POKEMON_ID";
@@ -25,7 +25,8 @@ const ORDER_ORIGINAL = "ORDER_ORIGINAL";
 const ORDER_ALF_A_TO_Z = "ORDER_ALF_A_TO_Z";
 const ORDER_ALF_Z_TO_A = "ORDER_ALF_Z_TO_A";
 const ORDER_ALF_DEFAULT = "ORDER_ALF_DEFAULT";
-
+const SET_PAGES = "SET_PAGES";
+const SET_INPUT = "SET_INPUT"
 export {
   GET_ALL_POKEMONS,
   GET_POKEMON_ID,
@@ -41,10 +42,11 @@ export {
   ORDER_ALF_A_TO_Z,
   ORDER_ALF_Z_TO_A,
   ORDER_ALF_DEFAULT,
+  SET_PAGES,
+  SET_INPUT,
   POST_POKEMON,
   ERROR_GET_POKEMON_NAME,
-  ERROR_GET_POKEMONS_DB
-
+  ERROR_GET_POKEMONS_DB,
 };
 
 export const getTypes = () => async (dispatch) => {
@@ -66,14 +68,13 @@ export const getPokemonsByID = (id) => async (dispatch) => {
 };
 
 export const getPokemonByName = (name) => async (dispatch) => {
-try {
-  const resolve = await fetch(`http://localhost:3001/pokemons?name=${name}`);
-  const data = await resolve.json()
-  return dispatch({ type: GET_POKEMON_NAME, payload: data });
-} catch {
-  return dispatch({type: ERROR_GET_POKEMON_NAME})
-}
-
+  try {
+    const resolve = await fetch(`http://localhost:3001/pokemons?name=${name}`);
+    const data = await resolve.json();
+    return dispatch({ type: GET_POKEMON_NAME, payload: data });
+  } catch {
+    return dispatch({ type: ERROR_GET_POKEMON_NAME });
+  }
 };
 
 //acces en la pagina de inicio.
@@ -84,16 +85,9 @@ export const accesFalse = () => {
   return { type: SET_ACCES_FALSE };
 };
 
-
 //Obtengo los pokemons de la db
-export const getPokemonOfDb = () => async (dispatch) => {
-  try {
-    const resolve = await fetch("http://localhost:3001/pokemons/dataBase");
-    let payload = await resolve.json();
-    return dispatch({ type: GET_POKEMON_ORIGIN_DB, payload });
-  } catch (error) {
-    dispatch({type: ERROR_GET_POKEMONS_DB})
-  }
+export const getPokemonOfDb = () => {
+  return { type: GET_POKEMON_ORIGIN_DB }
 };
 
 export const getPokemonsForTypes = (payload) => ({
@@ -109,14 +103,16 @@ export const resetOrederAlf = () => ({ type: ORDER_ALF_DEFAULT });
 export const order_A_Z = () => ({ type: ORDER_ALF_A_TO_Z });
 export const order_Z_A = () => ({ type: ORDER_ALF_Z_TO_A });
 
-
-export const createPokemon = (pokemonCreated)=> async dispatch => {
+export const createPokemon = (pokemonCreated) => async (dispatch) => {
   try {
-    axios.post("http://localhost:3001/pokemons", pokemonCreated);
-    // return dispatch({type: POST_POKEMON, payload: response})
+    const response = await axios.post("http://localhost:3001/pokemons", pokemonCreated);
+    alert(`Se creo a ${response.data.name} con exito`)
   } catch (error) {
-    console.log("Entro al error")
-    console.log(error.message)
+    alert("No se ah creado el pokemon, nombre repetido")
   }
+};
 
-} 
+export const setPagina = (payload)=> {
+  return ({type: SET_PAGES, payload})
+}
+export const setInput = (payload) => ({type: SET_INPUT, payload})

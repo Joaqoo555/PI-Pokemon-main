@@ -13,8 +13,11 @@ import {
   ORDER_ALF_A_TO_Z,
   ORDER_ALF_Z_TO_A,
   ORDER_ALF_DEFAULT,
+  SET_PAGES,
+  SET_INPUT,
   ERROR_GET_POKEMON_NAME,
   ERROR_GET_POKEMONS_DB,
+
 } from "../actions/index.js";
 
 
@@ -31,7 +34,9 @@ const initialState = {
   orderAlf: {
     a_z: false,
     z_a: false
-  }
+  },
+  pages: 1,
+  input: 1,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -89,9 +94,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
 //--------------------------------------------------------------------------------
 
-      //Filtrado para traer solo los pokemons de la base de datos
+      //Filtrado para traer solo los pokemons de la base de datos por la propiedadd isdefault
     case GET_POKEMON_ORIGIN_DB:
-      return { ...state, pokemons: payload };
+      state.pokemons = state.pokemons.filter((pokemon)=> !pokemon.is_default)
+      return { ...state, pokemons: state.pokemons };
 
 
 //--------------------------------------------------------------------------------
@@ -129,6 +135,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
           a_z: false,
           z_a: false,
         } }
+
+        case SET_PAGES: 
+        return {...state, pages: payload}
+        case SET_INPUT:
+        return {...state, input: payload}
 //retorno el estado inicial
     default:
       return initialState;
