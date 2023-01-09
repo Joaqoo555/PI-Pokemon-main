@@ -1,10 +1,14 @@
-import { useDispatch } from "react-redux";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+//actions
 import { accesFalse } from "../../redux/actions";
-import style from "./navBar.module.css";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineClose } from "react-icons/ai";
 
+//CSS
+import style from "./navBar.module.css";
+//react-icons
+import { GiHamburgerMenu } from "react-icons/gi";
+
+//Hooks
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 const NavBar = () => {
   const navigate = useNavigate();
@@ -13,11 +17,14 @@ const NavBar = () => {
     dispatch(accesFalse());
     navigate("/");
   };
-
+  
   const [bar, setbar] = useState(false);
 
   return (
     <nav >
+      <section>
+
+      </section>
     <section className={style.nav_bar}>
         {/* Open slider bar */}
         {!bar && <GiHamburgerMenu onClick={() => setbar(true)} className={style.open}/>}

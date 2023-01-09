@@ -1,9 +1,13 @@
+//hooks
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemonsForTypes, getTypes, orederOriginal, resetOrederAlf, setInput, setPagina } from "../../redux/actions/index";
 import { useEffect, useState } from "react";
-import { getAllPokemons, getPokemonOfDb } from "../../redux/actions/index";
-import style from "./filters.module.css";
 
+//actions
+import { getPokemonsForTypes, getTypes, orederOriginal, resetOrederAlf, setInput, setPagina } from "../../redux/actions/index";
+import { getAllPokemons, getPokemonOfDb } from "../../redux/actions/index";
+
+//css
+import style from "./filters.module.css";
 
 
 const Filters = () => {

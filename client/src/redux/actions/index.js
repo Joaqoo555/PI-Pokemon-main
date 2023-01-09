@@ -3,7 +3,6 @@ import axios from "axios";
 const POST_POKEMON = "POST_POKEMON";
 
 const ERROR_GET_POKEMON_NAME = "ERROR_GET_POKEMON_NAME";
-const ERROR_GET_POKEMONS_DB = "ERROR_GET_POKEMONS_DB";
 
 const GET_ALL_POKEMONS = "GET_ALL_POKEMONS";
 const GET_POKEMON_ID = "GET_POKEMON_ID";
@@ -46,7 +45,6 @@ export {
   SET_INPUT,
   POST_POKEMON,
   ERROR_GET_POKEMON_NAME,
-  ERROR_GET_POKEMONS_DB,
 };
 
 export const getTypes = () => async (dispatch) => {
