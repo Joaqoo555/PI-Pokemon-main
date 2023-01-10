@@ -3,6 +3,7 @@ import Paginado from "../Paginado/Paginado";
 import OrderHightToLow from "../CondicionalCards/OrderHightToLow";
 import ConsdicionalCards from "../CondicionalCards/ConsdicionalCards";
 import OrderLowToHight from "../CondicionalCards/OrderLowToHight";
+import OrderAToZ from "../CondicionalCards/OrderAToZ";
 
 //layouts
 import LoadingPokemons from "../../Layouts/LoadingPokemons/LoadingPokemons";
@@ -25,46 +26,46 @@ import {
 
 const Cards = () => {
   const dispatch = useDispatch();
+
   //pokemons api y db
-  const pokemons = useSelector((state) => state.pokemons);
-  const order = useSelector((state) => state.order);
-  console.log(pokemons)
+  const { pokemons, order, orderAlf } = useSelector((state) => state);
+  console.log(order, orderAlf);
+  console.log(pokemons);
   //pokemons encontrados
   const foundPokemons = useSelector((state) => state.foundPokemons);
 
   //Paginado
   // const [pagina, setPagina] = useState(1);
-  const pagina = useSelector(state => state.pages)
+  const pagina = useSelector((state) => state.pages);
   const porPagina = 12;
   const maximo = pokemons.length / porPagina;
+
   return (
     <div className={style.container_cards}>
       <div className={style.container_buttons}>
         <button
           onClick={() => {
             dispatch(orederHigth());
-            dispatch(resetOrederAlf());
           }}
           className={style.button}
         >
-          Ordenar de mayor ataque a menor
+          Ordenar de menor a mayor ataque
         </button>
         <button
           onClick={() => {
             dispatch(orederlow());
-            dispatch(resetOrederAlf());
           }}
           className={style.button}
         >
-          Ordenar de mayor menor a mayor
+          Ordenar de mayor a menor ataque
         </button>
       </div>
       <div className={style.container_buttons}>
         <button onClick={() => dispatch(order_A_Z())} className={style.button}>
-          a-z
+          Ordenar de la a-z
         </button>
         <button onClick={() => dispatch(order_Z_A())} className={style.button}>
-          z-a
+          Ordenar de la z-a
         </button>
       </div>
       <Paginado maximo={maximo} />
@@ -75,14 +76,19 @@ const Cards = () => {
           foundPokemons ? (
             //espero que mi array de pokemons se establezca, mientras carga hay una pantalla de carga
             pokemons.length > 0 ? (
-              !order.orderHiTolow && !order.orderLowToHi ? (
+              !order.orderHiTolow &&
+              !order.orderLowToHi ||
+              !orderAlf.a_z &&
+              !orderAlf.z_a ? (
                 <ConsdicionalCards pagina={pagina} porPagina={porPagina} />
               ) : order.orderHiTolow ? (
                 <OrderHightToLow pagina={pagina} porPagina={porPagina} />
+              ) : order.orderLowToHi ? (
+                <OrderLowToHight pagina={pagina} porPagina={porPagina} />
+              ) : orderAlf.a_z ? (
+                <OrderAToZ pagina={pagina} porPagina={porPagina}/>
               ) : (
-                order.orderLowToHi && (
-                  <OrderLowToHight pagina={pagina} porPagina={porPagina} />
-                )
+                orderAlf.z_a && console.log("gola")
               )
             ) : (
               //GIF de carga de pokemons
