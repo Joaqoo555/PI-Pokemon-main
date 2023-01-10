@@ -27,7 +27,6 @@ const CreatePokemon = () => {
     weight: 0,
     image: "",
     types: [],
-    is_default: false,
   });
 
   const [error, setError] = useState({});
@@ -85,7 +84,6 @@ const CreatePokemon = () => {
         weight: 0,
         image: "",
         types: [],
-        is_default: false,
       });
       dispatch(getAllPokemons());
     }

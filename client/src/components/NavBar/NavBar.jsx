@@ -5,7 +5,7 @@ import { accesFalse } from "../../redux/actions";
 import style from "./navBar.module.css";
 //react-icons
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import {AiOutlineClose} from "react-icons/ai"
 //Hooks
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

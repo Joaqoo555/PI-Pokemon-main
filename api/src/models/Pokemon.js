@@ -80,10 +80,18 @@ module.exports = (dataBase) => {
           max: 200,
         },
       },
-
+      image: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: { isUrl: true}
+      },
       is_default: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
+        validate: {
+          isBoolean: true,
+        },
       }
     },
     {
