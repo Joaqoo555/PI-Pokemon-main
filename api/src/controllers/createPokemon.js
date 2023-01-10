@@ -9,7 +9,7 @@ const createPokemon = async ({
   height,
   weight,
   types,
-  is_default = false
+  image,
 }) => {
   if (
     !name ||
@@ -30,6 +30,9 @@ const createPokemon = async ({
     const existTypes = await Type.findAll()
 
     if(!existTypes.length) throw new Error("No se puede crear pokemon, porque no estan los tipos de pokemons cargados")
+    
+    if(image === "" || image === null || image === undefined) image = "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/7/77/latest/20150621181250/Pikachu.png/1200px-Pikachu.png";
+    
     const newPokemon = await Pokemon.create({
     name,
     hp,
@@ -38,7 +41,7 @@ const createPokemon = async ({
     speed,
     height,
     weight,
-    is_default
+    image
   });
                         //[1,2,3]
   await newPokemon.addType(types);

@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
         
         res.status(201).send(pokemon)
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error.message)
     }
 
 });

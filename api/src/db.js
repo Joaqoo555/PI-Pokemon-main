@@ -18,7 +18,7 @@ const dataBase = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/
 //Autenticacion de DB
 dataBase.authenticate()
 .then(()=>console.log('Conexion a base de datos Exitosa'))
-.catch((error)=> console.error("Error en la conexion con la base de datos", error))
+.catch((err)=> console.error("Unable to connect to the database:", err))
 
 
 
