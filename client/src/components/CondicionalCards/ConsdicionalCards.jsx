@@ -27,7 +27,7 @@ const ConsdicionalCards = ({ pagina, porPagina }) => {
         pokemons
         //paginado
         .slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina)
-        .sort((a, b) => a.attack - b.attack)
+        // .sort((a, b) => a.attack - b.attack)
         .sort( (a, b) => {
           if (a.name > b.name) {
             return 1;
@@ -53,7 +53,7 @@ const ConsdicionalCards = ({ pagina, porPagina }) => {
         pokemons
         //paginado
         .slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina)
-        .sort((a, b) => a.attack - b.attack)
+        // .sort((a, b) => a.attack - b.attack)
         .sort( (a, b) => {
           if (a.name > b.name) {
             return -1;

@@ -1,7 +1,7 @@
 .pokemon{
     background-color: var(--color-background-principal);
     color: aliceblue;
-    height: 100vh;
+    height: auto;
 }
 .container_img_tittle{
     text-align: center;

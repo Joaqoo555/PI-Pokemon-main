@@ -102,91 +102,136 @@ const CreatePokemon = () => {
       <form onSubmit={hanldeOnSubmit}>
         <div className={style.inps}>
           <div className={style.conainer_inps}>
-            <input
-              placeholder="Introducir Nombre"
-              autoComplete="off"
-              type="text"
-              name="name"
-              onChange={handleOnChangeInps}
-              value={pokemon.name}
-              className={style.inp}
-            />
-            <input
-              placeholder="insert URL image"
-              autoComplete="off"
-              type="text"
-              name="image"
-              onChange={handleOnChangeInps}
-              value={pokemon.image}
-              className={style.inp}
-            />
-            <label htmlFor="">Vida</label>
-            <input
-              placeholder="Vida... ej: 49"
-              autoComplete="off"
-              type="text"
-              name="hp"
-              onChange={handleOnChangeInps}
-              value={pokemon.hp}
-              className={style.inp}
-            />
-            <label htmlFor="">Ataque</label>
+            <div className={style.inps_content}>
+              <input
+                placeholder="Introducir Nombre"
+                autoComplete="off"
+                type="text"
+                name="name"
+                onChange={handleOnChangeInps}
+                value={pokemon.name}
+                className={error.name ? style.error_inp : style.inp}
+              />
+              {
+                error.name &&
+                <span className={style.error_span}>{error.name}</span>
+              }
+            </div>
+            <div className={style.inps_content}>
+              <input
+                placeholder="insert URL image"
+                autoComplete="off"
+                type="text"
+                name="image"
+                onChange={handleOnChangeInps}
+                value={pokemon.image}
+                className={style.inp}
+              />
+              
+            </div>
+            <div className={style.inps_content}>
+              <label htmlFor="">Vida</label>
+              <input
+                placeholder="Vida... ej: 49"
+                autoComplete="off"
+                type="number"
+                name="hp"
+                onChange={handleOnChangeInps}
+                value={pokemon.hp}
+                className={error.hp ? style.error_inp : style.inp}
+              />
+                          {
+                error.hp &&
+                <span className={style.error_span}>{error.hp}</span>
+              }
+            </div>
+            <div className={style.inps_content}>
+              <label htmlFor="">Ataque</label>
 
-            <input
-              placeholder="Ataque... ej: 25"
-              autoComplete="off"
-              type="text"
-              name="attack"
-              onChange={handleOnChangeInps}
-              value={pokemon.attack}
-              className={style.inp}
-            />
+              <input
+                placeholder="Ataque... ej: 25"
+                autoComplete="off"
+                type="number"
+                name="attack"
+                onChange={handleOnChangeInps}
+                value={pokemon.attack}
+                className={error.attack ? style.error_inp : style.inp}
+              />
+                                        {
+                error.attack &&
+                <span className={style.error_span}>{error.attack}</span>
+              }
+            </div>
           </div>
           <div className={style.conainer_inps}>
-            <label htmlFor="">Defensa</label>
+            <div className={style.inps_content}>
+              <label htmlFor="">Defensa</label>
 
-            <input
-              placeholder="Defensa... ej: 200"
-              autoComplete="off"
-              type="text"
-              name="defense"
-              onChange={handleOnChangeInps}
-              value={pokemon.defense}
-              className={style.inp}
-            />
-            <label htmlFor="">Speed</label>
+              <input
+                placeholder="Defensa... ej: 200"
+                autoComplete="off"
+                type="number"
+                name="defense"
+                onChange={handleOnChangeInps}
+                value={pokemon.defense}
+                className={error.defense ? style.error_inp : style.inp}
+              />
+                                        {
+                error.defense &&
+                <span className={style.error_span}>{error.defense}</span>
+              }
+            <div className={style.inps_content}>
+              <label htmlFor="">Altura</label>
 
-            <input
-              placeholder="Speed... ej: 80"
-              autoComplete="off"
-              type="text"
-              name="speed"
-              onChange={handleOnChangeInps}
-              value={pokemon.speed}
-              className={style.inp}
-            />
-            <label htmlFor="">Altura</label>
+              <input
+                placeholder="Altura... ej: 1.23 "
+                autoComplete="off"
+                type="number"
+                name="height"
+                onChange={handleOnChangeInps}
+                value={pokemon.height}
+                className={error.height ? style.error_inp : style.inp}
+              />
+                                        {
+                error.height &&
+                <span className={style.error_span}>{error.height}</span>
+              }
+            </div>
+            </div>
+            <div className={style.inps_content}>
+              <label htmlFor="">Speed</label>
 
-            <input
-              placeholder="Altura... ej: 1.23 "
-              autoComplete="off"
-              type="text"
-              name="height"
-              onChange={handleOnChangeInps}
-              value={pokemon.height}
-              className={style.inp}
-            />
-            <label htmlFor="">Peso</label>
+              <input
+                placeholder="Speed... ej: 80"
+                autoComplete="off"
+                type="number"
+                name="speed"
+                onChange={handleOnChangeInps}
+                value={pokemon.speed}
+                className={error.speed ? style.error_inp : style.inp}
+              />
+                                        {
+                error.speed &&
+                <span className={style.error_span}>{error.speed}</span>
+              }
+            </div>
+            <div className={style.inps_content}>
+              <label htmlFor="">Peso</label>
 
-            <input
-              placeholder="Peso... ej: "
-              autoComplete="off"
-              type="text"
-              name="weight"
-              onChange={handleOnChangeInps}
-              value={pokemon.weight}
-              className={style.inp}
-            />
+              <input
+                placeholder="Peso... ej: "
+                autoComplete="off"
+                type="number"
+                name="weight"
+                onChange={handleOnChangeInps}
+                value={pokemon.weight}
+                className={error.weight ? style.error_inp : style.inp}
+              />
+                                        {
+                error.weight &&
+                <span className={style.error_span}>{error.weight}</span>
+              }
+            </div>
           </div>
         </div>
         <div className={style.types}>
@@ -204,6 +249,11 @@ const CreatePokemon = () => {
               />
             </section>
           ))}
+        </div>
+        <div>
+          {
+            error.types && <span className={style.error_span}>{error.types}</span>
+          }
         </div>
         <input
           type="submit"
