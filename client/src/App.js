@@ -6,7 +6,7 @@ import CreatePokemon from "./pages/CreatePokemon/CreatePokemon.jsx";
 import Detail from "./pages/Detail/Detail.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { accesTrue } from "./redux/actions/index.js";
-import NavBar from "./components/NavBar/NavBar.jsx";
+import NavBar from "./Layouts/NavBar/NavBar.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ function App() {
     !access && navigate("/");
   }, [access, navigate]);
 
+  <></>
   return (
     <>
       <Routes>

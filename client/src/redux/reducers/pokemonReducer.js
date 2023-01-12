@@ -62,6 +62,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
       state.pokemons = state.pokemons.filter((pokemon) => {
         return pokemon.types.some((type) => type === payload);
       });
+
+      
       //si no encuentra ninguno renderizo la imagen de not found, a la vez seteo el estado de los pokemons como antes
       if (state.pokemons.length === 0)
         return { ...state, foundPokemons: false, pokemons: []};

@@ -20,6 +20,7 @@ import {
   order_Z_A,
   orederHigth,
   orederlow,
+  orederOriginal,
   resetOrederAlf,
 } from "../../redux/actions";
 
@@ -33,7 +34,7 @@ const Cards = () => {
 
   //Paginado
   // const [pagina, setPagina] = useState(1);
-  const pagina = useSelector(state => state.pages)
+  const pagina = useSelector((state) => state.pages);
   const porPagina = 12;
   const maximo = pokemons.length / porPagina;
   return (
@@ -41,29 +42,41 @@ const Cards = () => {
       <div className={style.container_buttons}>
         <button
           onClick={() => {
-            dispatch(orederHigth());
             dispatch(resetOrederAlf());
+            dispatch(orederHigth());
           }}
           className={style.button}
         >
-          Ordenar de mayor ataque a menor ataque
+          Ordenar de menor ataque a mayor ataque
         </button>
         <button
           onClick={() => {
-            dispatch(orederlow());
             dispatch(resetOrederAlf());
+            dispatch(orederlow());
           }}
           className={style.button}
         >
-          Ordenar de menor a mayor ataque
+          Ordenar de mayor a menor ataque
         </button>
       </div>
       <div className={style.container_buttons}>
-        <button onClick={() => dispatch(order_A_Z())} className={style.button}>
+        <button
+          onClick={() => {
+            dispatch(orederOriginal());
+            dispatch(order_A_Z());
+          }}
+          className={style.button}
+        >
           Ordenar de la A - Z
         </button>
-        <button onClick={() => dispatch(order_Z_A())} className={style.button}>
-        Ordenar de la Z - A
+        <button
+          onClick={() => {
+            dispatch(orederOriginal());
+            dispatch(order_Z_A());
+          }}
+          className={style.button}
+        >
+          Ordenar de la Z - A
         </button>
       </div>
       <Paginado maximo={maximo} />

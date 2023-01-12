@@ -7,7 +7,7 @@ const getAllPokemons = async () => {
     const pokemonsApi = await getPokemonsFromApi();
     const pokemonsDb = await getPokemonsFromDb();
     
-    const allPokemons = [...pokemonsApi, ...pokemonsDb];
+    const allPokemons = [...pokemonsDb, ...pokemonsApi];
     //Retorno todos los pokemons
     return allPokemons;
   } catch (error) {

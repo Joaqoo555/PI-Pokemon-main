@@ -11,6 +11,7 @@
     max-height: 250px;
     background: #FFC8A9;
     margin-bottom: 20px;
+    margin: 20px;
     border-radius: .2em;
     box-shadow: 0 0 15px 1px rgb(0, 0, 0);
     padding: .2em;
@@ -30,9 +31,10 @@
     display: flex;
     justify-content: space-around;
     align-items: stretch;
+    flex-wrap: wrap;
 }
 .type{
-    margin: .8em 0;
+    margin: .3em 0;
     padding: .2em;
     border-radius: .3em;
     box-shadow: 0 0 5px 0 #333;
