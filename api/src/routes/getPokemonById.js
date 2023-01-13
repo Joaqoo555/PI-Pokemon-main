@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const getDetailPokemon = require("../controllers/getDetailPokemon.js");
+const getDetailPokemon = require("../controllers/getPokemonsByID/getDetailPokemon.js");
 //Viene el ID por parametro
 router.get("/:id", async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-const axiosGet = require("../helpers/axiosGet.js")
+const axiosGet = require("../../helpers/axiosGet.js")
 
 const getTypesAPI = async ()=>{
     const url = "https://pokeapi.co/api/v2/type"

@@ -1,5 +1,5 @@
 const getTypesAPI = require("./getTypesAPI.js");
-const { Type } = require("../db");
+const { Type } = require("../../db");
 
 const getTypesDb = async () => {
   const typesDb = await Type.findAll();

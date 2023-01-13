@@ -1,5 +1,5 @@
 const getPokemonsFromApi = require("./getPokemonsFromApi.js");
-const getPokemonsFromDb = require("./getPokemonsFromDb");
+const getPokemonsFromDb = require("./getPokemonsFromDb.js");
 
 const getAllPokemons = async () => {
   try {

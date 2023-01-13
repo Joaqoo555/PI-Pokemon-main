@@ -1,5 +1,5 @@
 const axios = require("axios");
-const axiosGet = require("../helpers/axiosGet.js");
+const axiosGet = require("../../helpers/axiosGet.js");
 
 const getPokemonsFromApi = async () => {
   try {

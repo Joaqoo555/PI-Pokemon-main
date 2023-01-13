@@ -1,4 +1,4 @@
-const { Pokemon, Type } = require("../db");
+const { Pokemon, Type } = require("../../db");
 
 const getPokemonDbByName = async (name) => {
   const pokemon = await Pokemon.findOne({

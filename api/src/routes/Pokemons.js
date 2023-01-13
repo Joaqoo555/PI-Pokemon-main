@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const getAllPokemons = require("../controllers/getAllPokemons.js");
-const getPokemonByName = require("../controllers/getPokemonByName.js")
+const getAllPokemons = require("../controllers/getAllPokemons/getAllPokemons.js");
+const getPokemonByName = require("../controllers/getPokemonsByName/getPokemonByName.js")
 
 
 
-router.get("/", async (req, res, next) => {
+router.get("/", async (req, res) => {
   try {
 
     let { name } = req.query;

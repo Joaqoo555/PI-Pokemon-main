@@ -1,5 +1,5 @@
 const { default: axios } = require("axios");
-const axiosGet = require("../helpers/axiosGet.js");
+const axiosGet = require("../../helpers/axiosGet.js");
 const getDetailPokemonAPI = async (id) => {
   if (!id) throw new Error("No se ingreso un ID");
   const url = `https://pokeapi.co/api/v2/pokemon/`;

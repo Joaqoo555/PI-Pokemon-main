@@ -1,4 +1,4 @@
-const { Pokemon, Type } = require("../db");
+const { Pokemon, Type } = require("../../db");
 const getDetailPokemonDb = async (id) => {
   try {
     if (!id) throw new Error("No se ingreso un ID");

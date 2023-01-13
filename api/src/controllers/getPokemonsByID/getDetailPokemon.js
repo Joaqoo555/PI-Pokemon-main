@@ -1,5 +1,5 @@
-const getDetailPokemonAPI = require("../controllers/getDetailPokemonAPI.js");
-const getDetailPokemonDb = require("../controllers/getDetailPokemonDb.js");
+const getDetailPokemonAPI = require("./getDetailPokemonAPI");
+const getDetailPokemonDb = require("./getDetailPokemonDb.js");
 
 const getDetailPokemon = async (id) => {
   try {

@@ -1,5 +1,5 @@
-const { Pokemon, Type } = require("../db");
-const getPokemonAPIByName = require("./getPokemonAPIByName.js")
+const { Pokemon, Type } = require("../../db");
+const getPokemonAPIByName = require("../getPokemonsByName/getPokemonAPIByName.js")
 const createPokemon = async ({
   name,
   hp,

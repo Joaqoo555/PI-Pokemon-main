@@ -20,7 +20,7 @@
 const server = require('./src/app.js');
 const { dataBase } = require('./src/db.js');
 const port = process.env.PORT || 3001
-
+console.log("as")
 // Syncing all the models at once.
 dataBase.sync({ force: true }).then(() => {
   server.listen(port, () => {

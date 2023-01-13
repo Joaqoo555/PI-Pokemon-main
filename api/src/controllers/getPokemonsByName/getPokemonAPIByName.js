@@ -1,4 +1,4 @@
-const axiosGet = require("../helpers/axiosGet.js");
+const axiosGet = require("../../helpers/axiosGet.js");
 
 const getPokemonAPIByName = async (PokemonName) => {
   const url = `https://pokeapi.co/api/v2/pokemon/`; 

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const createPokemon = require("../controllers/createPokemon.js")
+const createPokemon = require("../controllers/postPokemons/createPokemon.js")
 
 router.post("/", async (req, res) => {
     try {

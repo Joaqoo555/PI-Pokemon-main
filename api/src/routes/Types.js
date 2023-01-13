@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { default: axios } = require("axios");
-const getTypesDb = require("../controllers/getTypesDb.js")
+const getTypesDb = require("../controllers/getAllTypes/getTypesDb.js")
 
 
 

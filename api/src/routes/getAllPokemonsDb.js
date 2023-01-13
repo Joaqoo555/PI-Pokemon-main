@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const getPokemonsFromDb = require("../controllers/getPokemonsFromDb.js");
+const getPokemonsFromDb = require("../controllers/getAllPokemons/getPokemonsFromDb");
 
 router.get("/dataBase", async (req, res) => {
   try {
