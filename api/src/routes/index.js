@@ -6,6 +6,7 @@ const getAllPokemons = require("./Pokemons.js");
 const getPokemonById = require("./getPokemonById.js");
 const postPokemon = require("./postPokemon.js")
 const getAllPokemonsDb = require("./getAllPokemonsDb.js")
+const deletePokemonsDb = require('./deletePokemon')
 const Types = require("./Types.js");
 
 const router = Router();
@@ -18,6 +19,7 @@ router.use("/pokemons", [
     getAllPokemons,
     getPokemonById,
     postPokemon,
+    deletePokemonsDb
 ]);
 
 router.use('/types', Types)

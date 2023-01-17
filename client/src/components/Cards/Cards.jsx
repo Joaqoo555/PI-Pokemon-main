@@ -29,6 +29,7 @@ const Cards = () => {
   //pokemons api y db
   const pokemons = useSelector((state) => state.pokemons);
   const order = useSelector((state) => state.order);
+  console.log(pokemons)
   //pokemons encontrados
   const foundPokemons = useSelector((state) => state.foundPokemons);
 

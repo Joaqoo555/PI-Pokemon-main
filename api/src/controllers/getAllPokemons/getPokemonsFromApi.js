@@ -6,7 +6,11 @@ const getPokemonsFromApi = async () => {
     const urlAPI = "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0";
 
     const pokemons = await axiosGet(urlAPI);
-  
+
+    // pokemons.data.results = [{name, url},{name, url}]
+
+
+
     //datos de results.url de la API que me trae todos los datos de los pokemons como promesas
     const dataPokemons = pokemons.map(async (p) => {
       const pokemon = await axios

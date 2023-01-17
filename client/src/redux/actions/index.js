@@ -26,6 +26,7 @@ const ORDER_ALF_Z_TO_A = "ORDER_ALF_Z_TO_A";
 const ORDER_ALF_DEFAULT = "ORDER_ALF_DEFAULT";
 const SET_PAGES = "SET_PAGES";
 const SET_INPUT = "SET_INPUT"
+
 export {
   GET_ALL_POKEMONS,
   GET_POKEMON_ID,
@@ -106,7 +107,7 @@ export const createPokemon = (pokemonCreated) => async (dispatch) => {
     const response = await axios.post("http://localhost:3001/pokemons", pokemonCreated);
     alert(`Se creo a ${response.data.name} con exito`)
   } catch (error) {
-    alert("No se ah creado el pokemon, nombre repetido")
+    alert("No se a creado el pokemon, nombre repetido")
   }
 };
 

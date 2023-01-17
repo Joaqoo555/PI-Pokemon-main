@@ -14,16 +14,15 @@ const SearchBar = () => {
 
   const [search, setSearch] = useState("");
 
-
-  const handleSearch = ()=> {
-    dispatch(getPokemonByName(search))
-    setSearch("")
-  }
-
+  const handleSearch = () => {
+    if (search !== "") {
+      dispatch(getPokemonByName(search));
+      setSearch("");
+    }
+  };
 
   return (
     <header className={style.search_bar}>
-
       {!inps && (
         <BiSearchAlt
           onClick={() => setInps(true)}
@@ -37,15 +36,18 @@ const SearchBar = () => {
             onClick={() => setInps(false)}
             className={`${style.close} ${style.icon}`}
           />
-          <BiSearchAlt className={`${style.icon} ${style.find}`} onClick={handleSearch}/>
+          <BiSearchAlt
+            className={`${style.icon} ${style.find}`}
+            onClick={handleSearch}
+          />
           <input
             type="text"
             name="name"
             placeholder="Search for Name"
             className={`${style.search_name} ${style.input}`}
-            onChange={({target})=> setSearch(target.value)}
-            autoComplete="off"    
-            value={search}    
+            onChange={({ target }) => setSearch(target.value)}
+            autoComplete="off"
+            value={search}
           />
         </div>
       )}

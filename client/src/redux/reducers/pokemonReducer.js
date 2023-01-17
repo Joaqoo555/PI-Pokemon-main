@@ -47,13 +47,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
 //--------------------------------------------------------------------------------
     //Busco todos los pokemons y seteo el found en true, asi me renderiza las cards
     case GET_ALL_POKEMONS:
-      return { ...state, pokemons: payload, foundPokemons: true };
+      return { ...state, pokemons: payload, foundPokemons: true};
       
 //--------------------------------------------------------------------------------
       
       //Obtengo tipos desde el back
     case GET_TYPES:
-      return { ...state, types: payload };
+      return { ...state, types: payload,  pokemonId: {}  };
       
 //--------------------------------------------------------------------------------
       
@@ -75,7 +75,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
       //Obtengo el pokemon por name desde el back en forma de array con un solo objeto, asi puedo renderizar la card en el front
     case GET_POKEMON_NAME:
-      return { ...state, pokemons: payload };
+      return { ...state, pokemons: payload,  foundPokemons: true};
 
 
       //Obtengo pokemon por Id desde el back para renderizarlo en la ruta detail
